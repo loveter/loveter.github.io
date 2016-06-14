@@ -12,11 +12,11 @@
 
     <title>
         
-          需求分析模版｜Ron&#39;s blog
+          在类Mac OS下管理多个公钥和密钥｜Ron&#39;s blog
         
     </title>
 
-    <link rel="canonical" href="http://yoursite.com/2016/06/14/requirement-analysis-template/">
+    <link rel="canonical" href="http://yoursite.com/2016/06/14/gen-mutil-ssh-key-on-linux/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -147,9 +147,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
                 <div class="post-heading">
-                    <h1>需求分析模版</h1>
+                    <h1>在类Mac OS下管理多个公钥和密钥</h1>
                     
-                        <h2 class="subheading">一个很值得推荐给大家学习的需求分析模版</h2>
+                        <h2 class="subheading">给不同的git仓库托管服务商提供不同的ssh公钥</h2>
                     
                     <span class="meta">
                          作者 Ron Liu
@@ -159,9 +159,7 @@
                     </span>
                     <div class="tags text-center">
                         
-                        <a class="tag" href="/tags/#软件工程" title="软件工程">软件工程</a>
-                        
-                        <a class="tag" href="/tags/#需求分析" title="需求分析">需求分析</a>
+                        <a class="tag" href="/tags/#ssh公钥和密钥" title="ssh公钥和密钥">ssh公钥和密钥</a>
                         
                     </div>
                 </div>
@@ -170,7 +168,7 @@
     </div>
     <div class="post-title-haojen">
         <span>
-            需求分析模版
+            在类Mac OS下管理多个公钥和密钥
         </span>
     </div>
 </header>
@@ -182,77 +180,28 @@
                 <!-- Post Container -->
             <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
 
-                <p>软件需求分析就是把软件计划期间建立的软件可行性分析求精和细化，分析各种可能的解法，并且分配给各个软件元素。需求分析是软件定义阶段的最后一步，是确定系统必须要完成哪些工作，也就是对目标系统提出完整，准确，清晰，具体的要求。<br><a id="more"></a><br>软件需求分析的任务是：深入描述软件的功能和性能，确定软件设计的约束和软件同其它系统直接交互的接口细节，定义软件的其它有效性需求，借助于当前系统的逻辑模型导出目标系统的逻辑模型，解决目标系统”做什么“的问题。</p>
-<p>需求的分析主要分为：<code>需求提出</code>，<code>需求描述</code>和<code>需求评审</code>三个阶段。</p>
-<ul>
-<li><p><code>需求提出</code>阶段，主要集中于描述系统的目的。需求提出和需求分析主要集中于使用者对系统的观点上。使得用户和开发人员确定一个问题领域，并定义一个描述该问题领域的系统。这样的定义称之为系统规格说明书，并且它也在用户和开发者之间充当合同。</p>
-</li>
-<li><p><code>需求分析和描述</code>阶段，分析人员的主要任务是：对用户的需求进行鉴别，综合和建模，清除用户需求的模糊性，歧义性和不一致性。分析系统的数据要求，为原始问题及目标软件建立逻辑模型。分析人员要将原始问题与软件开发经验结合起来，以便发现哪些问题是由于用户的片面行为和短期行为所导致的不合理需求，哪些是用户尚未提出的但是具有真正价值的潜在需求。根据问题分析的结论导出一份需求规格说明。</p>
-</li>
-<li><p><code>需求评审</code>阶段，分析人员要在用户和软件设计人员的配合下对自己生成的需求规格说明和初步的用户使用手册进行复核，以确保软件需求的完整，准确，清晰，具体，并使得用户和软件设计人员就需求规格说明和初步的用户使用手册的理解达成一致。在此阶段一旦发现遗漏或模糊点，应尽快更正，再进行检查。</p>
-</li>
-</ul>
-<p>软件需求说明书的编制是为了使用户和软件开发者双方对软件的初始规定有一个共同的理解，使之成为整个软件开发工作的基础。编制软件需求说明书的内容要求如下：</p>
-<h4 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h4><p><strong>1.1 编写目的</strong></p>
-<p>编写此文档的目的和意义。</p>
-<p><strong>1.2 背景</strong></p>
-<p> 说明：</p>
-<pre><code>a. 待开发软件系统的名称；
-b. 本项目的任务提出者,开发者,用户以及实现该软件的计算中心和计算网络;
-c. 该软件系统同其它软件系统或其他机构的基本的互相来往关系;
-</code></pre><p><strong>1.3 定义</strong></p>
-<p>列出本文中专门用到的术语和外文缩写的原词组。</p>
-<p><strong>1.4 参考资料</strong></p>
-<p>列出用的着的参考资料：</p>
-<pre><code>a. 本项目的核准计划书或合同，上级机关的批文;
-b. 属于本项目的其他发表文件;
-c. 本文件中各处引用的文件，资料，包括所要用到的软件开发标准。列出这些资料的标题，
-   文件编号，发表日期和出版单位，说明得到这些文件资料的来源；
-</code></pre><h4 id="2-任务概述"><a href="#2-任务概述" class="headerlink" title="2 任务概述"></a>2 任务概述</h4><p><strong>2.1 目标</strong></p>
-<p>叙述该项软件开发的意图、应用目标、作用范围以及其他应向读者说明的有关该软件开发的背景材料。解释被开发软件与其他有关软件之间的关系。如果本软件产品是一项独立的软件，而且全部内容自含，则说明这一点。如果所定义的产品是一个更大的系统的一个组成部分，则应说明本产品与该系统中其他各组成部分之间的关系，为此可使用一张方框图来说明该系统的组成和本产品同其他各部分的联系和接口。</p>
-<p><strong>2.2 用户特点</strong></p>
-<p>列出本软件的最终用户的特点，充分说明操作人员、维护人员的教育水平和技术专长，以及本软件的预期使甩频度。这些是软件设计工作的重要约束。</p>
-<p><strong>2.3 假定和约束</strong></p>
-<p>列出进行本软件开发工作的假定和约束，例如经费限制、开发期限等。</p>
-<h4 id="3-需求规定"><a href="#3-需求规定" class="headerlink" title="3 需求规定"></a>3 需求规定</h4><p><strong>3.1 对功能的规定</strong></p>
-<p>用列表的方式（例如IPO表即输入、处理、输出表的形式），逐项定量和定性地叙述对软件所提出的功能要求，说明输入什么量、经怎样的处理、得到什么输出，说明软件应支持的终端数和应支持的并行操作的用户数。</p>
-<p><strong>3.2 对性能的规定</strong></p>
-<p><em>3.2.1 精度</em></p>
-<p>说明对该软件的输入、输出数据精度的要求，可能包括传输过程中的精度。</p>
-<p><em>3.2.2 时间特性要求</em></p>
-<p>说明对于该软件的时间特性要求，如对：</p>
-<pre><code>a．响应时间；
-b．更新处理时间；
-c．数据的转换和传送时间；
-d．解题时间； 等的要求。 
-</code></pre><p><em>3.2.3 灵活性</em></p>
-<p>说明对该软件的灵活性的要求，即当需求发生某些变化时，该软件对这些变化的适应能力，如：</p>
-<pre><code>a．操作方式上的变化；
-b．运行环境的变化； 
-c．同其他软件的接口的变化；
-d．精度和有效时限的变化； 
-e．计划的变化或改进。 
-</code></pre><p>对于为了提供这些灵活性而进行的专门设计的部分应该加以标明。</p>
-<p><strong>3.3 输入输出的要求</strong></p>
-<p>解释各输入输出数据类型，并逐项说明其媒体、格式、数值范围、精度等。对软件的数据输出及必须标明的控制输出量进行解释并举例，包括对硬拷贝报告（正常结果输出、状态输出及异常输出）以及图形或显示报告的描述。</p>
-<p><strong>3.4 数据管理能力的要求</strong></p>
-<p>说明需要管理的文卷和记录的个数、表和文卷的大小规模，要按可预见的增长对数据及其分量的存储要求作出估算。</p>
-<p><strong>3.5 故障处理的要求</strong></p>
-<p>列出可能的软件、硬件故障以及对各项性能而言所产生的后果和对故障处理的要求。<br><strong>3.6     其他专门要求</strong></p>
-<p>如用户单位对安全保密的要求，对使用方便的要求，对可维护性、可补充性、易读性、可靠性、运行环境可转换性的特殊要求等。</p>
-<h4 id="4-运行环境规定"><a href="#4-运行环境规定" class="headerlink" title="4 运行环境规定"></a>4 运行环境规定</h4><p><strong>4.1 设备</strong></p>
-<p>列出运行该软件所需要的硬设备。说明其中的新型设备及其专门功能，包括：</p>
-<pre><code>a．处理器型号及内存容量；
-b．外存容量、联机或脱机、媒体及其存储格式，设备的型号及数量；
-c．输入及输出设备的型号和数量，联机或脱机； 
-d．数据通信设备的型号和数量；
-e．功能键及其他专用硬件
-</code></pre><p><strong>4.2 支持软件</strong> </p>
-<p>列出支持软件,包括要用到的操作系统、编译（或汇编）程序、测试支持软件等。</p>
-<p><strong>4.3 接口</strong></p>
-<p>说明该软件同其他软件之间的接口、数据通信协议等。</p>
-<p><strong>4.4 控制</strong></p>
-<p>说明控制该软件的运行的方法和控制信号，并说明这些控制信号的来源。</p>
+                <p>随着git版本管理工具的兴起，有越来越多的服务商提供代码托管服务。国际上著名的github代码托管服务和国内最大的开源社区oschina提供的码云代码托管服务都是基于git托管代码的。客户主机与远程代码仓库同步的时，大部分的服务上主要提供两种连接方式https和ssh。在这两种连接方式中https每次客户主机与远程代码仓库同步代码的时候都要显式的输入用户名和密码进行验证身份，而基于ssh连接的方式只要在托管服务商配置后ssh公钥后就可以免密码同步代码而且安全性也比较高。</p>
+<p>网上大部分使用git的ssh方式同步代码都是单个密钥的配置教程。本文通过综合网络上各教程实现同一台客户主机实现多个不同的ssh公钥和密钥连接不同的git代码托管服务商。</p>
+<p>生成ssh密钥的过程中要用到<code>ssh-keygen</code>工具。默认的情况生成的公钥和密钥在<code>~/.ssh</code>目录下，并且密钥的文件名称是<code>id_rsa</code>，公钥的文件名称是<code>id_rsa.pub</code>。由此可知默认情况下公钥文件名是在密钥文件命的基础上加<code>.pub</code>后缀。本文以 <em><a href="www.github.com">github</a></em> 和 <em><a href="git.oschina.net">oschina</a></em> 为例介绍如何在同一台机器上部署多个公钥。</p>
+<h3 id="1-生成两个ssh钥匙"><a href="#1-生成两个ssh钥匙" class="headerlink" title="1. 生成两个ssh钥匙"></a>1. 生成两个ssh钥匙</h3><pre><code>$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.github -C &quot;Key for github.com&quot;
+$ ssh-keygen -t rsa -f ~/.ssh/id_rsa.oschina -C &quot;Key for oschina.net&quot;
+</code></pre><p>这行这两个命令后会直接生成两对钥匙，参数<code>-t rsa</code>指定了ssh密钥的类型，参数<code>-f ~/.ssh/id_rsa.github</code>指定了生成密钥和公钥的路径。最后生成的密钥和公钥为<code>~/.ssh/id_rsa.github</code>和<code>~/.ssh/id_rsa.github.pub</code>。</p>
+<h3 id="2-生成验证authorized-keys文件"><a href="#2-生成验证authorized-keys文件" class="headerlink" title="2. 生成验证authorized_keys文件"></a>2. 生成验证authorized_keys文件</h3><p>authorized_keys用于存放用户的公钥,另外它还有访问控制的功能。这个步骤要生成<code>~/.ssh/authorized_keys</code>文件，并把公钥的内容复制到这个文件里面。</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYkRxljpXs3otlWIik7v4/+63y5CnWIm9Rk4qsQ75BiFPsVAkMMcUgfbloEKyhXbAN9loqVnjsXeIERynJTRk9R4hugu8zc3TEfnkGh4RMlG9tt9IQAJYdqDraqb0s/toRREoqUBI4ohFG6PLciKf5mEnyiUdr0B70I8G18bpODXK5c+G6QDKqmH2CGB/s7Uk9RY4urU5gS5Lg1MALV/Z8VeslbeWsM/zjN5oxmnaEzwQiGmrR+35EGcu/0hMIOMI9Dd/XjapPJscdc5KzCf+PdfkaBIocdgo1P1POkcCDC8ApMIyGXk0IToFTWLy4lrBb3pVc7Jixe896esrX0PXP Key for github.com
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGIYQstl5YTCa+9hlcDBzXIFeDqbvF7riKEKYDeOeRclRo/APseWFRz8JAbLTTWmHqYEjp+HSai1mo1vlw3yoc/wJ4lH9xBLwuqTmD7095+jFdNwVW+djfQfFwrXfsGzTdBEm858k2ym1EDGUL3vwn9UCtvTIV/WktZH4jAwHJreNQCxDTZmd2RgGTwH188iYDIAAKSTTWvO+F3BRnJUxs1I75GvkPR8iCDUS/yrWxvi5paSLsdO1woiZ557Bdv4vr5fmpcF1nKUcxcj2TFlY8/EQ7AKR5JK4+TWBjd+5wKTQXGHQmStzBaCBlsjHouaL5ufI9Mmd++fAyTnJC2JpZ Key for oschina.net
+</code></pre><p>完成后的效果可能如上。</p>
+<h3 id="3-生成config配置文件"><a href="#3-生成config配置文件" class="headerlink" title="3. 生成config配置文件"></a>3. 生成config配置文件</h3><p>如果有多个ssh公钥同时使用一定要配置config文件，并且config配置文件的权限一定要给600。下面是<code>~/.ssh/config</code> 文件的内容。</p>
+<pre><code>Host github.com
+    IdentityFile ~/.ssh/id_rsa.github
+    User git
+Host git.oschina.net
+    IdentityFile ~/.ssh/id_rsa.oschina
+    User git
+</code></pre><p>config文件内容里Host对应的参数为要访问主机的名称，User 对应的参数为git ssh 访问地址@前面的部分，例如:<code>git@git.oschina.git</code>这个git仓库访问地址，@前面的为git，所以User 对应的参数为git，Host就是@后面的托管服务的主机地址。</p>
+<h3 id="4-测试配置"><a href="#4-测试配置" class="headerlink" title="4. 测试配置"></a>4. 测试配置</h3><p>完成上面的配置后，可以使用下面的命令进行测试。这里我对自己配置的托管服务进行测试。</p>
+<pre><code>$ ssh -T git@git.oschina.net
+Welcome to Git@OSC, Ron.Liu!
+</code></pre><p>如果你看到类似上面这个样子，那么恭喜你配置成功了。</p>
 
 
                 <hr>
@@ -261,11 +210,11 @@ e．功能键及其他专用硬件
                 <!-- 多说 Share start -->
                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="2016/06/14/requirement-analysis-template/"
-                    data-title="需求分析模版"
-                    data-url="http://yoursite.com/2016/06/14/requirement-analysis-template/"
-                    data-images="http://yoursite.com/2016/06/14/requirement-analysis-template/img/post-default.jpg"
-                    data-content="软件需求分析就是把软件计划期间建立的软件可行性分析求精和细化，分析各种可能的解法，并且分配给各... | Ron&#39;s blog " >
+                    data-thread-key="2016/06/14/gen-mutil-ssh-key-on-linux/"
+                    data-title="在类Mac OS下管理多个公钥和密钥"
+                    data-url="http://yoursite.com/2016/06/14/gen-mutil-ssh-key-on-linux/"
+                    data-images="http://yoursite.com/2016/06/14/gen-mutil-ssh-key-on-linux/img/post-default.jpg"
+                    data-content="随着git版本管理工具的兴起，有越来越多的服务商提供代码托管服务。国际上著名的github代码... | Ron&#39;s blog " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -283,13 +232,9 @@ e．功能键及其他专用硬件
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/06/14/gen-mutil-ssh-key-on-linux/" data-toggle="tooltip" data-placement="top" title="在类Mac OS下管理多个公钥和密钥">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/06/12/how-to-bulid-android-source/" data-toggle="tooltip" data-placement="top" title="Ubuntu12.04 配置Android5.1.1源码编译环境">Next Post &rarr;</a>
+                            <a href="/2016/06/14/requirement-analysis-template/" data-toggle="tooltip" data-placement="top" title="需求分析模版">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -298,9 +243,9 @@ e．功能键及其他专用硬件
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="2016/06/14/requirement-analysis-template/"
-                        data-title="需求分析模版"
-                        data-url="http://yoursite.com/2016/06/14/requirement-analysis-template/" >
+                        data-thread-key="2016/06/14/gen-mutil-ssh-key-on-linux/"
+                        data-title="在类Mac OS下管理多个公钥和密钥"
+                        data-url="http://yoursite.com/2016/06/14/gen-mutil-ssh-key-on-linux/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -312,7 +257,7 @@ e．功能键及其他专用硬件
 
             <div class="hidden-xs col-sm-3 toc-col" >
                 <div class="toc-wrap">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-引言"><span class="toc-text">1 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-任务概述"><span class="toc-text">2 任务概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-需求规定"><span class="toc-text">3 需求规定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-运行环境规定"><span class="toc-text">4 运行环境规定</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-生成两个ssh钥匙"><span class="toc-text">1. 生成两个ssh钥匙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-生成验证authorized-keys文件"><span class="toc-text">2. 生成验证authorized_keys文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-生成config配置文件"><span class="toc-text">3. 生成config配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-测试配置"><span class="toc-text">4. 测试配置</span></a></li></ol>
                 </div>
             </div>
         </div>
