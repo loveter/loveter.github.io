@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+    .intro-header{
+        background-image:url(
+        'undefined'
+        )
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " data-ispost = "false" data-istags="false
+" data-ishome = "true" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Ron
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/all-categories/">all-categories</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-tags/">all-tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-archives/">all-archives</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+
+    <style>
+
+        .custom-haojen-container .post-preview:nth-of-type(1),
+        .custom-haojen-container .post-preview-poetry:nth-of-type(1){
+            text-align: center;
+            background-repeat: no-repeat;
+            border-radius: 3px;
+            background-size: cover;
+            padding:0;
+            height: 300px;
+            display: table;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.16);
+        }
+        /*去掉诗歌的背景图片*/
+        .custom-haojen-container .post-preview-poetry:nth-of-type(1){
+            background-image: none!important;
+            background-color: rgba(255, 248, 220, 0.5);
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) h2,
+        .custom-haojen-container .post-preview:nth-child(1) .post-meta,
+        .custom-haojen-container .post-preview:nth-child(1) .post-subtitle {
+            text-shadow: 0 0 40px rgba(0, 0, 0, 1);
+            letter-spacing: 1px;
+            color: #fff;
+            font-family: unset;
+            font-weight: 500;
+            margin-top: 0;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+
+        .custom-haojen-container .post-preview:nth-child(1) .post-meta{
+            font-size: .9em;
+            font-weight: 300;
+            margin-top: 0;
+        }
+        .custom-haojen-container .post-preview-poetry:nth-child(1) .post-subtitle{
+            letter-spacing: 6px;
+            font-size: 18px;
+            font-family: unset;
+            font-weight: 400;
+            color: rgba(0,0,0,.75)
+        }
+        /*不显示摘要*/
+        .custom-haojen-container .post-preview:nth-child(1) .post-content-preview{display: none}
+        /*只第一个显示背景图片*/
+        .custom-haojen-container .post-preview:not(:nth-child(1)){
+            background-image: none!important;
+        }
+        /*第一个分界线去掉*/
+        .custom-haojen-container hr:nth-of-type(1){
+            display: none;
+        }
+        /*主题*/
+        .custom-haojen-container .post-preview:nth-of-type(1)>a{
+            display: table-cell;
+            vertical-align: middle;
+        }
+        /*诗词标题*/
+        .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
+            font-size: 35px;
+            font-family:  STKaiti;
+            color: rgba(0,0,0,.8);
+        }
+        .custom-haojen-container .post-preview-poetry:nth-of-type(1) .post-meta{
+            color: #0e2231;
+        }
+        @media (max-width: 768px)  {
+            .custom-haojen-container .post-preview:nth-child(1) {
+                height: 240px;
+            }
+            .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
+                font-size: 28px!important;
+                margin-top: 0;
+            }
+            .custom-haojen-container .post-preview:nth-child(1) .post-subtitle{
+                font-size: 18px;
+                font-weight:400;
+                padding-left: 0;padding-right: 0;
+            }
+            .custom-haojen-container .post-preview:nth-of-type(1) > a{padding: 20px}
+        }
+
+        /*手机屏幕*/
+        @media (max-width: 400px){
+            .custom-haojen-container .post-preview:nth-child(1){
+                height: 195px;
+            }
+            .custom-haojen-container .post-preview-poetry:nth-child(1) h2{
+                font-size: 20px!important;
+            }
+            .custom-haojen-container .post-preview:nth-child(1) .post-subtitle{
+                font-size: 16px;
+            }
+            .custom-haojen-container .post-preview:nth-child(1) a{
+                padding: 30px 20px;
+            }
+        }
+    </style>
+
+<!-- Page Header -->
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 visible-xs-block visible-sm-block">
+    <div class="row">
+        <header class="intro-header">
+            <div class="container">
+                <div class="site-heading text-center">
+                    <div class="about-me">
+                        <!--移动端头部显示-->
+                        <img src="undefined" />
+                        <h5><a href="/about/">Ron Liu</a></h5>
+                        <p>undefined</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    </div>
+<!-- Main Content -->
+<div class="container custom-haojen-container">
+    <!-- Post Container -->
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12 col-xs-12 post-container">
+            <!-- Main Content -->
+
+
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2016/06/14/requirement-analysis-template/">
+        <h2 class="post-title">
+            需求分析模版
+        </h2>
+        <p class="post-meta">
+            2016-06-14
+        </p>
+        
+            <h3 class="post-subtitle">
+                一个很值得推荐给大家学习的需求分析模版
+            </h3>
+        
+        <div class="post-content-preview">
+            <p>
+                软件需求分析就是把软件计划期间建立的软件可行性分析求精和细化，分析各种可能的解法，并且分配给各个软件元素。需求分析是软件定义阶段的最后一步，是确定系统必须要完成哪些工作，也就是对目标系统提出完整，准确，清晰，具体的要求。软件需求分析的任务是：深入描述软件的功能和性能，确定软件设计的约束和软件同...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2016/06/12/how-to-bulid-android-source/">
+        <h2 class="post-title">
+            Ubuntu12.04 配置Android5.1.1源码编译环境
+        </h2>
+        <p class="post-meta">
+            2016-06-12
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                本文主要说明如何在Ubuntu 12.04（64位） 上编译Android 5.1.1代码。具体介绍如何下载Android指定版本的代码，如何建立编译环境，以及如何编译android代码。本次实验中编译的是AOSP的Android5.1.1_r1分支代码。
+1.Android源码编译的要求参考...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2015/12/19/unzip-file-in-android/">
+        <h2 class="post-title">
+            在Android应用中解压Zip文件包
+        </h2>
+        <p class="post-meta">
+            2015-12-19
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                在现代的移动应用的开发过程中，用户体验是产品需求中的非常重要的一点。受限于网络速度和流量额度限制，为了提升产品体验，软件设计师经常缓存一些不经常变动的静态内容在手机本地存储当中，例如：离线地图，离线文章功能等。一个较为常用的方案是把大量的文件打包为一个文件集合zip包，移动应用程序从服务器下载...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2015/12/14/move-content-under-keyboard/">
+        <h2 class="post-title">
+            处理键盘弹出时遮盖文本输入框
+        </h2>
+        <p class="post-meta">
+            2015-12-14
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                在iOS开发应用程序的过程中，往往会有文本输入框获取焦点后，键盘弹出来会遮住在它下面的文本框，此时就无法对进行正常的工作了。由于输入文本框控件获取焦点后，系统响应此事件并从交互界面底部弹出键盘，出现这种情况后，通过调整一个或几个视图的大小和尺寸，让输入文本框控件跟着键盘一起向上滑动到合适的位置...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2015/12/13/use-external-accessory-framework/">
+        <h2 class="post-title">
+            使用External Accessory
+        </h2>
+        <p class="post-meta">
+            2015-12-13
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+iOS 3.0 以后苹果公司为外部配件和iPhone手机之间提供了一种基于管道机制的通信框架ExternalAccessory.framework，它充当了外部配件和iPhone手机间通信的桥梁，使得基于iOS的设备可以和外部配件进行信息交流。开发人员在应用程序中使用此框架可以通过30-pi...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2015/12/01/custom-uiprogressview/">
+        <h2 class="post-title">
+            UIProgressView 图片设置进度条
+        </h2>
+        <p class="post-meta">
+            2015-12-01
+        </p>
+        
+        <div class="post-content-preview">
+            <p>
+                
+在Storyboard中使用UIProgressView 设置了Progress Image和Track Image没能正常的工作。这里使用第三方库解决。
+progress image:{% asset_img progress_image.png %}
+track image:{% ass...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+<div class="post-preview "
+        style="background-image: url('img/post-default.jpg')">
+        <a href="/2015/11/26/begin-writing/">
+        <h2 class="post-title">
+            该是写点什么的时候了
+        </h2>
+        <p class="post-meta">
+            2015-11-26
+        </p>
+        
+            <h3 class="post-subtitle">
+                希望一直写下去...
+            </h3>
+        
+        <div class="post-content-preview">
+            <p>
+                
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;把手头的事情搞完有一阶段时间了，慢慢发现最近挺清闲的，清闲了几天后有点闲不住的感觉了。可能我就是这么一个纠结的人，平时需求多、任务重、加班堆码的时候多么渴望能有时间空闲下来喝一杯清茶，聆听一首柔美的音乐。当真正空闲了几天后回头想想又...
+            </p>
+        </div>
+    </a>
+
+</div>
+<hr>
+
+
+
+<!-- 翻页 pager -->
+
+<ul class="pager">
+    
+    
+</ul>
+
+
+        </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+
+                <!-- About Me -->
+                <section class="visible-md visible-lg" style="padding: 0 18px">
+                    <div class="short-about">
+                        <!--侧边栏头像-->
+                        
+                        <h5><a href="/about/">Ron Liu</a></h5>
+                        
+                        <hr>
+                        <!-- SNS Link 社交 -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+
+
+                            
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Featured Tags  标签 -->
+                
+
+            </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ron 2016 
+                    <br>
+                    <!--Theme by <a href="https://github.com/Kaijun/">Kaijun</a>-->
+                    <!--<span style="display: inline-block; margin: 0 5px;">-->
+                        <!--<i class="fa fa-heart"></i>-->
+                    <!--</span> -->
+                    Theme by <a href="http://ehazon.github.io/">Haojen Ma</a>
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >-->
+                    <!--</iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="undefined">
+</body>
+
+</html>

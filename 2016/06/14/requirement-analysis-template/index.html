@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          需求分析模版｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/06/14/requirement-analysis-template/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+    .intro-header{
+        background-image:url(
+        'img/post-default.jpg'
+        )
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Ron
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/all-categories/">all-categories</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-tags/">all-tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-archives/">all-archives</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+<img class="wechat-title-img" src="icon_wechat.jpg">
+
+<!-- Post Header -->
+<!-- only post bg-->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('img/post-default.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>需求分析模版</h1>
+                    
+                        <h2 class="subheading">一个很值得推荐给大家学习的需求分析模版</h2>
+                    
+                    <span class="meta">
+                         作者 Ron Liu
+                         <span>
+                          日期 2016-06-14
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#软件工程" title="软件工程">软件工程</a>
+                        
+                        <a class="tag" href="/tags/#需求分析" title="需求分析">需求分析</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            需求分析模版
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <p>软件需求分析就是把软件计划期间建立的软件可行性分析求精和细化，分析各种可能的解法，并且分配给各个软件元素。需求分析是软件定义阶段的最后一步，是确定系统必须要完成哪些工作，也就是对目标系统提出完整，准确，清晰，具体的要求。<br><a id="more"></a><br>软件需求分析的任务是：深入描述软件的功能和性能，确定软件设计的约束和软件同其它系统直接交互的接口细节，定义软件的其它有效性需求，借助于当前系统的逻辑模型导出目标系统的逻辑模型，解决目标系统”做什么“的问题。</p>
+<p>需求的分析主要分为：<code>需求提出</code>，<code>需求描述</code>和<code>需求评审</code>三个阶段。</p>
+<ul>
+<li><p><code>需求提出</code>阶段，主要集中于描述系统的目的。需求提出和需求分析主要集中于使用者对系统的观点上。使得用户和开发人员确定一个问题领域，并定义一个描述该问题领域的系统。这样的定义称之为系统规格说明书，并且它也在用户和开发者之间充当合同。</p>
+</li>
+<li><p><code>需求分析和描述</code>阶段，分析人员的主要任务是：对用户的需求进行鉴别，综合和建模，清除用户需求的模糊性，歧义性和不一致性。分析系统的数据要求，为原始问题及目标软件建立逻辑模型。分析人员要将原始问题与软件开发经验结合起来，以便发现哪些问题是由于用户的片面行为和短期行为所导致的不合理需求，哪些是用户尚未提出的但是具有真正价值的潜在需求。根据问题分析的结论导出一份需求规格说明。</p>
+</li>
+<li><p><code>需求评审</code>阶段，分析人员要在用户和软件设计人员的配合下对自己生成的需求规格说明和初步的用户使用手册进行复核，以确保软件需求的完整，准确，清晰，具体，并使得用户和软件设计人员就需求规格说明和初步的用户使用手册的理解达成一致。在此阶段一旦发现遗漏或模糊点，应尽快更正，再进行检查。</p>
+</li>
+</ul>
+<p>软件需求说明书的编制是为了使用户和软件开发者双方对软件的初始规定有一个共同的理解，使之成为整个软件开发工作的基础。编制软件需求说明书的内容要求如下：</p>
+<h4 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h4><p><strong>1.1 编写目的</strong></p>
+<p>编写此文档的目的和意义。</p>
+<p><strong>1.2 背景</strong></p>
+<p> 说明：</p>
+<pre><code>a. 待开发软件系统的名称；
+b. 本项目的任务提出者,开发者,用户以及实现该软件的计算中心和计算网络;
+c. 该软件系统同其它软件系统或其他机构的基本的互相来往关系;
+</code></pre><p><strong>1.3 定义</strong></p>
+<p>列出本文中专门用到的术语和外文缩写的原词组。</p>
+<p><strong>1.4 参考资料</strong></p>
+<p>列出用的着的参考资料：</p>
+<pre><code>a. 本项目的核准计划书或合同，上级机关的批文;
+b. 属于本项目的其他发表文件;
+c. 本文件中各处引用的文件，资料，包括所要用到的软件开发标准。列出这些资料的标题，
+   文件编号，发表日期和出版单位，说明得到这些文件资料的来源；
+</code></pre><h4 id="2-任务概述"><a href="#2-任务概述" class="headerlink" title="2 任务概述"></a>2 任务概述</h4><p><strong>2.1 目标</strong></p>
+<p>叙述该项软件开发的意图、应用目标、作用范围以及其他应向读者说明的有关该软件开发的背景材料。解释被开发软件与其他有关软件之间的关系。如果本软件产品是一项独立的软件，而且全部内容自含，则说明这一点。如果所定义的产品是一个更大的系统的一个组成部分，则应说明本产品与该系统中其他各组成部分之间的关系，为此可使用一张方框图来说明该系统的组成和本产品同其他各部分的联系和接口。</p>
+<p><strong>2.2 用户特点</strong></p>
+<p>列出本软件的最终用户的特点，充分说明操作人员、维护人员的教育水平和技术专长，以及本软件的预期使甩频度。这些是软件设计工作的重要约束。</p>
+<p><strong>2.3 假定和约束</strong></p>
+<p>列出进行本软件开发工作的假定和约束，例如经费限制、开发期限等。</p>
+<h4 id="3-需求规定"><a href="#3-需求规定" class="headerlink" title="3 需求规定"></a>3 需求规定</h4><p><strong>3.1 对功能的规定</strong></p>
+<p>用列表的方式（例如IPO表即输入、处理、输出表的形式），逐项定量和定性地叙述对软件所提出的功能要求，说明输入什么量、经怎样的处理、得到什么输出，说明软件应支持的终端数和应支持的并行操作的用户数。</p>
+<p><strong>3.2 对性能的规定</strong></p>
+<p><em>3.2.1 精度</em></p>
+<p>说明对该软件的输入、输出数据精度的要求，可能包括传输过程中的精度。</p>
+<p><em>3.2.2 时间特性要求</em></p>
+<p>说明对于该软件的时间特性要求，如对：</p>
+<pre><code>a．响应时间；
+b．更新处理时间；
+c．数据的转换和传送时间；
+d．解题时间； 等的要求。 
+</code></pre><p><em>3.2.3 灵活性</em></p>
+<p>说明对该软件的灵活性的要求，即当需求发生某些变化时，该软件对这些变化的适应能力，如：</p>
+<pre><code>a．操作方式上的变化；
+b．运行环境的变化； 
+c．同其他软件的接口的变化；
+d．精度和有效时限的变化； 
+e．计划的变化或改进。 
+</code></pre><p>对于为了提供这些灵活性而进行的专门设计的部分应该加以标明。</p>
+<p><strong>3.3 输入输出的要求</strong></p>
+<p>解释各输入输出数据类型，并逐项说明其媒体、格式、数值范围、精度等。对软件的数据输出及必须标明的控制输出量进行解释并举例，包括对硬拷贝报告（正常结果输出、状态输出及异常输出）以及图形或显示报告的描述。</p>
+<p><strong>3.4 数据管理能力的要求</strong></p>
+<p>说明需要管理的文卷和记录的个数、表和文卷的大小规模，要按可预见的增长对数据及其分量的存储要求作出估算。</p>
+<p><strong>3.5 故障处理的要求</strong></p>
+<p>列出可能的软件、硬件故障以及对各项性能而言所产生的后果和对故障处理的要求。<br><strong>3.6     其他专门要求</strong></p>
+<p>如用户单位对安全保密的要求，对使用方便的要求，对可维护性、可补充性、易读性、可靠性、运行环境可转换性的特殊要求等。</p>
+<h4 id="4-运行环境规定"><a href="#4-运行环境规定" class="headerlink" title="4 运行环境规定"></a>4 运行环境规定</h4><p><strong>4.1 设备</strong></p>
+<p>列出运行该软件所需要的硬设备。说明其中的新型设备及其专门功能，包括：</p>
+<pre><code>a．处理器型号及内存容量；
+b．外存容量、联机或脱机、媒体及其存储格式，设备的型号及数量；
+c．输入及输出设备的型号和数量，联机或脱机； 
+d．数据通信设备的型号和数量；
+e．功能键及其他专用硬件
+</code></pre><p><strong>4.2 支持软件</strong> </p>
+<p>列出支持软件,包括要用到的操作系统、编译（或汇编）程序、测试支持软件等。</p>
+<p><strong>4.3 接口</strong></p>
+<p>说明该软件同其他软件之间的接口、数据通信协议等。</p>
+<p><strong>4.4 控制</strong></p>
+<p>说明控制该软件的运行的方法和控制信号，并说明这些控制信号的来源。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/06/12/how-to-bulid-android-source/" data-toggle="tooltip" data-placement="top" title="Ubuntu12.04 配置Android5.1.1源码编译环境">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-引言"><span class="toc-text">1 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-任务概述"><span class="toc-text">2 任务概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-需求规定"><span class="toc-text">3 需求规定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-运行环境规定"><span class="toc-text">4 运行环境规定</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ron 2016 
+                    <br>
+                    <!--Theme by <a href="https://github.com/Kaijun/">Kaijun</a>-->
+                    <!--<span style="display: inline-block; margin: 0 5px;">-->
+                        <!--<i class="fa fa-heart"></i>-->
+                    <!--</span> -->
+                    Theme by <a href="http://ehazon.github.io/">Haojen Ma</a>
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >-->
+                    <!--</iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="undefined">
+</body>
+
+</html>

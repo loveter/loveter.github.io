@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          使用External Accessory｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2015/12/13/use-external-accessory-framework/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+    .intro-header{
+        background-image:url(
+        'img/post-default.jpg'
+        )
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Ron
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/all-categories/">all-categories</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-tags/">all-tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-archives/">all-archives</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+<img class="wechat-title-img" src="icon_wechat.jpg">
+
+<!-- Post Header -->
+<!-- only post bg-->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('img/post-default.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>使用External Accessory</h1>
+                    
+                    <span class="meta">
+                         作者 Ron Liu
+                         <span>
+                          日期 2015-12-13
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                        <a class="tag" href="/tags/#外设" title="外设">外设</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            使用External Accessory
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <!-- toc -->
+<p>iOS 3.0 以后苹果公司为外部配件和iPhone手机之间提供了一种基于管道机制的通信框架ExternalAccessory.framework，它充当了外部配件和iPhone手机间通信的桥梁，使得基于iOS的设备可以和外部配件进行信息交流。开发人员在应用程序中使用此框架可以通过30-pin的连接器，Lighting接口，以及蓝牙链接外部配件，并将配件级别的功能集成到应用程序中，这可以极大增强某类场景下的应用程序的扩展性和实用性。<br><a id="more"></a></p>
+<h2 id="配件基础"><a href="#配件基础" class="headerlink" title="配件基础"></a>配件基础</h2><p>iOS应用程序要和外部配件进行数据传输，需要先透过iOS操作系统，只用通过认证的外部配件才有资格和iOS应用程序进行信息交流。iOS系统和外设配件认证最开始的认证过程。苹果为这个认证过程提供了一颗认证芯片，只有通过<a href="https://developer.apple.com/programs/mfi/" target="_blank" rel="external">MFI</a>认证的设备才可以被iOS系统识别。</p>
+<p>如果iOS程序要支持配件功能，那么此时在配件和应用程序通信之前，是要和配件制造商紧密的合作，并且清晰的理解配件提供的服务。配件制造商必须显示的说明他们的设备和iOS应用程序之间的通信协议。并且配件必须至少支持一种协议，这样才能和iOS程序之间进行数据传输。苹果公司并不负责维护一个协议注册列表，配件支持何种协议以及支持的是自定义协议还是标准协议都是用制造商决定的。为了避免名字空间发生冲突，协议的名称由反向的DNS字符串来指定，形式是com.apple.myProtocol。</p>
+<h2 id="声明应用程序支持的协议"><a href="#声明应用程序支持的协议" class="headerlink" title="声明应用程序支持的协议"></a>声明应用程序支持的协议</h2><p>如果应用程序能够和配件通信，那么应该在该程序的Info.plist文件中生成所支持配件的协议。当配件接入是系统知道如何启动相应的程序提供支持，如果在当前系统中没有安装支持当前接入配件协议的应用程序，App Store会启动并指向支持此配件协议的应用程序。<br>在应用程序的工程文件中支持配件的协议，需要在Info.plist文件中包含UISupportedExternalAccessoryProtocols键以及它所对应的值，该键所对应的是一组字符串数组，它说明了应用程序支持的配件协议。可以在该数组中包含任意数量的协议。系统不是根据这些值来确定应用程序和配件通信的时候选择那些协议，而是使用这些值来确定应用程序可以和哪些支持这些协议的配件进行通信。</p>
+<h2 id="引入ExternalAccessory-framework到工程"><a href="#引入ExternalAccessory-framework到工程" class="headerlink" title="引入ExternalAccessory.framework到工程"></a>引入ExternalAccessory.framework到工程</h2><p>在iOS 程序中要使用External Accessory框架的接口，就必须引入ExternalAccessory.framework 到Xcode工程中指定的编译目标中。并且还需要在使用此框架的源代码中添加#import <externalaccessory externalaccessory.h="">语句以引入此框架，只有以上步骤都正确后才可以使用此框架的接口链接外部设备。</externalaccessory></p>
+<h2 id="使用External-Accessory连接外部设备"><a href="#使用External-Accessory连接外部设备" class="headerlink" title="使用External Accessory连接外部设备"></a>使用External Accessory连接外部设备</h2><p>在外部配件接入iOS系统准备好之前，应用程序是不能够发现它的。当外部配件准备好以后才可以获得Accessory对象以及使用配件支持的协议打开一个会话。<br>共享的<a href="https://developer.apple.com/library/ios/documentation/ExternalAccessory/Reference/EAAccessoryManager_class/index.html#//apple_ref/occ/cl/EAAccessoryManager" target="_blank" rel="external">EAAccessoryManager</a>提供了应用程序访问接入系统配件的入口。可以使用枚举的方式获取EAAccessoryManager共享对象中包含的应用程序需要访问的外设对象。每一个外设对象使用<a href="https://developer.apple.com/library/ios/documentation/ExternalAccessory/Reference/EAAccessory_class/index.html#//apple_ref/occ/cl/EAAccessory" target="_blank" rel="external">EAAccessory</a>对象表示，它包含了设备名称，制造商，型号，以及通信协议。程序必须使用和设备制造商提供的协议才可以确定访问的EAAccessory对象，如果多个外设提供相同的协议，需要程序开发人员确定需要链接的设备。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">- (EASession *)openSessionForProtocol:(<span class="built_in">NSString</span> *)protocolString</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSArray</span> *accessories = [[EAAccessoryManager sharedAccessoryManager]</span><br><span class="line">                                   connectedAccessories];</span><br><span class="line">    EAAccessory *accessory = <span class="literal">nil</span>;</span><br><span class="line">    EASession *session = <span class="literal">nil</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (EAAccessory *obj <span class="keyword">in</span> accessories)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> ([[obj protocolStrings] containsObject:protocolString])</span><br><span class="line">        &#123;</span><br><span class="line">            accessory = obj;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (accessory)</span><br><span class="line">    &#123;</span><br><span class="line">        session = [[EASession alloc] initWithAccessory:accessory</span><br><span class="line">                                 forProtocol:protocolString];</span><br><span class="line">        <span class="keyword">if</span> (session)</span><br><span class="line">        &#123;</span><br><span class="line">            [[session inputStream] setDelegate:<span class="keyword">self</span>];</span><br><span class="line">            [[session inputStream] scheduleInRunLoop:[<span class="built_in">NSRunLoop</span> currentRunLoop]</span><br><span class="line">                                     forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line">            [[session inputStream] open];</span><br><span class="line">            [[session outputStream] setDelegate:<span class="keyword">self</span>];</span><br><span class="line">            [[session outputStream] scheduleInRunLoop:[<span class="built_in">NSRunLoop</span> currentRunLoop]</span><br><span class="line">                                     forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line">            [[session outputStream] open];</span><br><span class="line">            [session autorelease];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> session;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据协议确定应用程序要连接的外部设备，并且使用<a href="https://developer.apple.com/library/ios/documentation/ExternalAccessory/Reference/EASession_class/" target="_blank" rel="external">EASession</a>和设备之间建立并保持会话。使用输入输出流的方式在程序和外设之间进行数据传输。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Handle communications from the streams.</span></span><br><span class="line">- (<span class="keyword">void</span>)stream:(<span class="built_in">NSStream</span>*)theStream handleEvent:(<span class="built_in">NSStreamEvent</span>)streamEvent</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">switch</span> (streamEvent)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">NSStreamHasBytesAvailable</span>:</span><br><span class="line">            <span class="comment">// Process the incoming stream data.</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">case</span> <span class="built_in">NSStreamEventHasSpaceAvailable</span>:</span><br><span class="line">            <span class="comment">// Send the next queued command.</span></span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的方法是代理委托的方式实现的，当数据可以处理的时候，开发人员实现代理处理接收或发送的数据。</p>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2015/12/14/move-content-under-keyboard/" data-toggle="tooltip" data-placement="top" title="处理键盘弹出时遮盖文本输入框">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/12/01/custom-uiprogressview/" data-toggle="tooltip" data-placement="top" title="UIProgressView 图片设置进度条">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配件基础"><span class="toc-text">配件基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#声明应用程序支持的协议"><span class="toc-text">声明应用程序支持的协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入ExternalAccessory-framework到工程"><span class="toc-text">引入ExternalAccessory.framework到工程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用External-Accessory连接外部设备"><span class="toc-text">使用External Accessory连接外部设备</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ron 2016 
+                    <br>
+                    <!--Theme by <a href="https://github.com/Kaijun/">Kaijun</a>-->
+                    <!--<span style="display: inline-block; margin: 0 5px;">-->
+                        <!--<i class="fa fa-heart"></i>-->
+                    <!--</span> -->
+                    Theme by <a href="http://ehazon.github.io/">Haojen Ma</a>
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >-->
+                    <!--</iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="undefined">
+</body>
+
+</html>

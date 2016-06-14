@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="null">
+    <meta name="keyword"  content="undefined">
+    <link rel="shortcut icon" href="/img/coffee.png">
+
+    <title>
+        
+          Ubuntu12.04 配置Android5.1.1源码编译环境｜undefined
+        
+    </title>
+
+    <link rel="canonical" href="http://yoursite.com/2016/06/12/how-to-bulid-android-source/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/blog-style.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<style>
+    .intro-header{
+        background-image:url(
+        'img/post-default.jpg'
+        )
+    }
+</style>
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top " data-ispost = "true" data-istags="false
+" data-ishome = "false" >
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span class="brand-logo">
+                    Ron
+                </span>
+                's Blog
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <!-- /.navbar-collapse -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+                        
+                        <li>
+                            <a href="/all-categories/">all-categories</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-tags/">all-tags</a>
+                        </li>
+                        
+                    
+                        
+                        <li>
+                            <a href="/all-archives/">all-archives</a>
+                        </li>
+                        
+                    
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+    <!-- Main Content -->
+    
+<!-- Image to hack wechat -->
+<!--only post-->
+<img class="wechat-title-img" src="icon_wechat.jpg">
+
+<!-- Post Header -->
+<!-- only post bg-->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('img/post-default.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center">
+                <div class="post-heading">
+                    <h1>Ubuntu12.04 配置Android5.1.1源码编译环境</h1>
+                    
+                    <span class="meta">
+                         作者 Ron Liu
+                         <span>
+                          日期 2016-06-12
+                         </span>
+                    </span>
+                    <div class="tags text-center">
+                        
+                        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+                        
+                        <a class="tag" href="/tags/#源码编译" title="源码编译">源码编译</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-title-haojen">
+        <span>
+            Ubuntu12.04 配置Android5.1.1源码编译环境
+        </span>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                <!-- Post Container -->
+            <div class="col-lg-8 col-lg-offset-1 col-sm-9 post-container">
+
+                <p>本文主要说明如何在Ubuntu 12.04（64位） 上编译Android 5.1.1代码。<br>具体介绍如何下载Android指定版本的代码，如何建立编译环境，以及如何编译android代码。<br>本次实验中编译的是AOSP的Android5.1.1_r1分支代码。<br><a id="more"></a></p>
+<h2 id="1-Android源码编译的要求"><a href="#1-Android源码编译的要求" class="headerlink" title="1.Android源码编译的要求"></a>1.Android源码编译的要求</h2><p><strong>参考</strong></p>
+<pre><code>https://source.android.com/source/requirements.html
+</code></pre><p>Anddroid官网说明了编译各版本的具体要求，下面简要介绍一下。</p>
+<ul>
+<li>Android各版本要求的Ubuntu系统版本</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Android 版本</th>
+<th>编译要求的Ubuntu最低版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android 6.0 - AOSP maste</td>
+<td>Ubuntu 14.04</td>
+</tr>
+<tr>
+<td>Android 2.3.x - Android 5.x</td>
+<td>Ubuntu 12.04</td>
+</tr>
+<tr>
+<td>Android 1.5 - Android 2.2.x</td>
+<td>Ubuntu 10.04</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Android各版本要求的jdk版本</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Android 版本</th>
+<th>编译要求的Ubuntu  jdk版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Android 6.0 - AOSP master</td>
+<td>Ubuntu OpenJDK 8</td>
+</tr>
+<tr>
+<td>Android 5.x - Android 6.0</td>
+<td>Ubuntu OpenJDK 7</td>
+</tr>
+<tr>
+<td>Android 2.3.x - Android 5.x</td>
+<td>Ubuntu OracleJDK 6</td>
+</tr>
+<tr>
+<td>Android 1.5 - Android 2.2.x</td>
+<td>Ubuntu OracleJDK 5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>编译要求的关键工具</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>工具名称及版本</th>
+<th>工具获取地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 2.6 – 2.7</td>
+<td><a href="http://www.python.org/download/" target="_blank" rel="external">python.org</a></td>
+</tr>
+<tr>
+<td>GNU Make 3.81 – 3.82</td>
+<td><a href="http://ftp.gnu.org/gnu/make/" target="_blank" rel="external"> gnu.org</a></td>
+</tr>
+<tr>
+<td>Git 1.7 or newer</td>
+<td><a href="http://git-scm.com/download" target="_blank" rel="external">git-scm.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-建立Android编译环境"><a href="#2-建立Android编译环境" class="headerlink" title="2.建立Android编译环境"></a>2.建立Android编译环境</h2><p>Android源码编译环境的配置在不同版本的Ubuntu操作系统中是有所差异的，这里主要介绍编译Android-5.1.1_r1版本的源码以及所在的Ubuntu 12.04版本的操作系统中的配置过程。</p>
+<p><strong>安装java sdk</strong></p>
+<p>在Ubuntu 12.04系统中可以直接使用命令安装open JDK。</p>
+<pre><code>sudo apt-get install openjdk-7-jdk
+</code></pre><blockquote>
+<p>如果在操作系统中已经存在了其它版本的java 这时候需要使用设置默认的java版本<br><br>$ sudo update-alternatives –config java<br><br>$ sudo update-alternatives –config javac</p>
+</blockquote>
+<p><strong>安装编译要求的软件包</strong></p>
+<p>Ubutnu12.04 支持老版本Android源码的编译要求，但是不能满足最新版本以及主线版本的编译环境要求，下面是安装依赖库的命令行。</p>
+<pre><code>$ sudo apt-get install git gnupg flex bison gperf build-essential \
+  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \
+  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 \
+  libgl1-mesa-dev g++-multilib mingw32 tofrodos \
+  python-markdown libxml2-utils xsltproc zlib1g-dev:i386
+
+$ sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
+</code></pre><p><strong>配置编译结果输出文件夹</strong></p>
+<p>在Android源码的编译中如果没有显示的指定编译结果输出文件夹，系统会默认会把编译结果存储在源码文件夹下的out文件夹中。在一些主机上可能会存在多个物理磁盘，如果把输出文件放在一块独立的硬盘上对编译效率会有很高的提升。通过设置一个环境变量<strong><code>OUT_DIR_COMMON_BASE</code></strong>并把它指向所要存储编译结果的本地路径（加入<code>～/.bashrc</code>）。</p>
+<pre><code>export OUT_DIR_COMMON_BASE=&lt;path-to-your-out-directory&gt;
+</code></pre><p>在真实的开发环境中，往往同一个机器中会有多个不同版本的Android源码，这些版本的源码共同使用一个输出文件夹。在输出编译结果的时候，会使用源码根文件夹名称作为各个版本编译结果输出的根文件夹。</p>
+<p>例如：在同一个机器中可能有不同的源码，<em><code>/source/android-5.1.1_r1</code></em>和<em><code>/source/android-5.2.1_r1</code></em>并且<strong><code>OUT_DIR_COMMON_BASE</code></strong>已经设置为<em><code>/output</code></em>文件夹,那么当两个版本编译过后回在此目录下生成两个编译的结果<em><code>/output/android-5.1.1_r1</code></em>和<em><code>/output/android-5.2.1_r1</code></em></p>
+<blockquote>
+<p>⚠️注意：因为不同版本的编译输出结果在同一<strong><code>OUT_DIR_COMMON_BASE</code></strong>环境变量所指定的文件夹中，那么要求不同版本的Android源码根文件夹不能使用同一个名字，否则会发生意想不到的情况。</p>
+</blockquote>
+<p><strong>配置USB访问权限</strong></p>
+<p>在GNU/Linux操作系统下(特别在Ubuntu操作系统下)，系统默认是不允许用户直接的访问USB接口的。为了进行真机调试，往往需要改变系统配置，添加用户访问USB接口的权限。</p>
+<p>一个非常好的解决方法是使用root用户新增USB接口访问控制权限配置文件：<em><code>/etc/udev/rules.d/51-android.rules</code></em></p>
+<p>为了增加对Android设备的访问权限配置，google提供了一个简单的实现方法，就是下载已经配置好的USB配置规则，替换当前系统的用户名，然后放到对应的目录下。</p>
+<pre><code>$ wget -S -O - http://source.android.com/source/51-android.rules | sed &quot;s/&lt;username&gt;/$USER/&quot; | sudo tee &gt;/dev/null /etc/udev/rules.d/51-android.rules; sudo udevadm control --reload-rules
+</code></pre><p><strong>设置ccache缓存（可选）</strong></p>
+<p>在Android源码编译中，可以可选的设置编译是否使用编译缓存工具，ccache作为一个编译器缓存工具可以使得重新编译的速度提升。设置编译缓存对经常使用 <code>make clean</code>指令的用户非常有帮助。</p>
+<p>把下面的指令加入环境变量可以启用编译缓存功能（加入<code>～/.bashrc</code>）。</p>
+<pre><code>export USE_CCACHE=1
+</code></pre><p>默认情况下ccache会存储在<code>~/.ccache</code>下，但是用户还可以通过设置环境变量指定特殊的文件夹。（加入<code>～/.bashrc</code>）</p>
+<pre><code>export CCACHE_DIR=&lt;path-to-your-cache-directory&gt;
+</code></pre><p>通常建议给cache的大小50-100GB，在下载好源码之后，在源码的根目录下执行如下指令。这条指令的设置结果被存放在<code>CCACHE_DIR</code>中并且是永久性的。</p>
+<pre><code>prebuilts/misc/linux-x86/ccache/ccache -M 50G
+</code></pre><h2 id="3-下载指定版本的Android源码"><a href="#3-下载指定版本的Android源码" class="headerlink" title="3.下载指定版本的Android源码"></a>3.下载指定版本的Android源码</h2><p><strong>安装repo</strong></p>
+<p>repo是一个封装了git的工具，它使得编译Android源码变的非常简单。众所周知，Android是一个非常大的系统，它由很多不同部分组成，每个部分又是一个独立的git仓库。在Android源码系统中直接使用git指令要做很多的工作，而且往往会出错。使用google提供的repo工具很好的解决各个部分版本的同步问题。</p>
+<ol>
+<li><p>确保当前用户的home目录下存在bin目录，并且执行下面指令。</p>
+<p><code>$ mkdir ~/bin</code><br><br><code>$ PATH=~/bin:$PATH</code></p>
+</li>
+<li><p>下载repo并赋予可执行权限</p>
+<p><code>$ curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</code><br><br><code>$ chmod a+x ~/bin/repo</code></p>
+</li>
+</ol>
+<p><strong>配置repo</strong></p>
+<ol>
+<li><p>创建一个空目录存放Android源码文件</p>
+<p><code>$ mkdir WORKING_DIRECTORY</code><br><br><code>$ cd WORKING_DIRECTORY</code></p>
+</li>
+<li><p>配置git的用户名和邮箱</p>
+<p><code>$ git config --global user.name &quot;Your Name&quot;</code><br><br><code>$ git config --global user.email &quot;you@example.com&quot;</code></p>
+</li>
+<li><p>执行<code>repo inti</code>指令下载最新的android源码，<br><code>$ repo init -u https://android.googlesource.com/platform/manifest</code></p>
+<p>如果要下载其它分支的Android源码可以使用<code>-b</code>参数，大部分基于Android源码的开发主要使用这种方式获取锁需要的Android分支，本文主要使用<code>android-5.1.1_r1</code>。这里给出了所有的<a href="https://source.android.com/source/build-numbers.html#source-code-tags-and-builds" target="_blank" rel="external">源码版本号，标签以及构建号</a>。</p>
+<p><code>$ repo init -u https://android.googlesource.com/platform/manifest -b android-5.1.1_r1</code></p>
+<blockquote>
+<p>⚠️注意：上面介绍android下载的教程，主要是使用google的android镜像，由于各种原因在国内一般无法直接访<br>问。需要使用vpn或其它方法连上google服务器。<br><br>作为替代的方案，我们可以选择使用<a href="https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="external">清华大学提供的android镜像</a>，这里有详细的介绍如何使用。本文不做赘述。</p>
+</blockquote>
+</li>
+</ol>
+<p>成功初始化以后，可以在当前目录下生成一个<code>.repo</code>文件夹，这个文件夹会保存android源码文件。</p>
+<p><strong>下载源码</strong></p>
+<p>在上面初始化的工作文件夹下，执行下面的指令下载对应版本的Android源代码。</p>
+<pre><code>$ repo sync
+</code></pre><p>如果在执行下载的过程中发生失败的情况，只需要再一次执行 <code>$ repo sync</code>指令继续下载。</p>
+<h2 id="4-编译Android源码"><a href="#4-编译Android源码" class="headerlink" title="4.编译Android源码"></a>4.编译Android源码</h2><p><strong>设置环境</strong></p>
+<p>通过加载<code>envsetup.sh</code>文件配置android环境。</p>
+<pre><code>$ source build/envsetup.sh
+</code></pre><p><strong>选择构建目标</strong></p>
+<p>使用<code>lunch</code>指令设置构建目标的类型。可以直接在终端输入<code>lunch</code> 然后通过序号选择构建指定的目标或者直接在<code>lunch</code>指令后面接参数。</p>
+<pre><code>$ lunch  
+</code></pre><p>  或</p>
+<pre><code>$ lunch aosp_arm-eng
+</code></pre><table>
+<thead>
+<tr>
+<th>构建类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user</td>
+<td>限制一些功能的访问，主要应用于发布产品时使用</td>
+</tr>
+<tr>
+<td>userdebug</td>
+<td>像user类型一样，但是root用户可以使用调试功能，更多的是为了调试使用</td>
+</tr>
+<tr>
+<td>eng</td>
+<td>开发环境的配置以及包含一些附加的调试工具</td>
+</tr>
+</tbody>
+</table>
+<p><strong>编译源码</strong></p>
+<p>编译android源码要使用<code>make</code>工具。<code>make</code>工具提供本身支持多线程并发工作，编译的时候可以指定参数 <code>-jN</code>设置多线程并发编译.一般的N代表物理硬件核心数的1-2倍。例如我的机器cpu是<code>i5-6500 @ 3.20 GHz</code>（1CPUs,每颗CPU有4个核心，每个核心1个线程），一般可以指定 <code>make -j4</code>或者<code>make -j8</code></p>
+<pre><code>$ make -j8
+</code></pre><p><strong>运行</strong></p>
+<ol>
+<li><p>模拟器<br>通过模拟器运行构建的android镜像非常简单，直接使用命令行就可以。</p>
+<p><code>$ emulator</code></p>
+</li>
+<li><p>真机运行</p>
+<p>暂时没有验证，不做介绍。如果需要请自行查找相关文档。</p>
+</li>
+</ol>
+
+
+                <hr>
+
+                
+
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/06/14/requirement-analysis-template/" data-toggle="tooltip" data-placement="top" title="需求分析模版">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2015/12/19/unzip-file-in-android/" data-toggle="tooltip" data-placement="top" title="在Android应用中解压Zip文件包">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                
+
+                
+
+            </div>
+
+            <div class="hidden-xs col-sm-3 toc-col" >
+                <div class="toc-wrap">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Android源码编译的要求"><span class="toc-text">1.Android源码编译的要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-建立Android编译环境"><span class="toc-text">2.建立Android编译环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-下载指定版本的Android源码"><span class="toc-text">3.下载指定版本的Android源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-编译Android源码"><span class="toc-text">4.编译Android源码</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ron 2016 
+                    <br>
+                    <!--Theme by <a href="https://github.com/Kaijun/">Kaijun</a>-->
+                    <!--<span style="display: inline-block; margin: 0 5px;">-->
+                        <!--<i class="fa fa-heart"></i>-->
+                    <!--</span> -->
+                    Theme by <a href="http://ehazon.github.io/">Haojen Ma</a>
+                    <!--<iframe-->
+                        <!--style="margin-left: 2px; margin-bottom:-5px;"-->
+                        <!--frameborder="0" scrolling="0" width="91px" height="20px"-->
+                        <!--src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >-->
+                    <!--</iframe>-->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/blog.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://yoursite.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+    <!--wechat title img-->
+    <img class="wechat-title-img" src="undefined">
+</body>
+
+</html>
